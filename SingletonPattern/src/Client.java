@@ -5,12 +5,12 @@ public class Client {
 
 public static void main(String[] args) { 
 
-    SingletonLazy sl1 = SingletonLazy.getSingletonLazy();
+    SingletonEnum se1 = SingletonEnum.INSTANCE;
 
     try {
-        Constructor<SingletonLazy> constructor = SingletonLazy.class.getDeclaredConstructor();
+        Constructor<SingletonEnum> constructor = SingletonEnum.class.getDeclaredConstructor();
         constructor.setAccessible(true);
-        SingletonLazy sl2 = constructor.newInstance();
+        SingletonEnum se2 = constructor.newInstance();
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException | NoSuchMethodException | SecurityException e) {
         e.printStackTrace();
