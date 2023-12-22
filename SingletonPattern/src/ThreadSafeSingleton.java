@@ -4,6 +4,9 @@ public class ThreadSafeSingleton {
     
     //private constructor to restrict multiple object creation
     private ThreadSafeSingleton(){
+        // To avoid breaking of Singleton pattern using Reflection API
+        if(threadSafeSingleton!=null)
+            throw new RuntimeException("Singleton object already exists");
     }
     
     public static ThreadSafeSingleton getThreadSafeSingleton(){

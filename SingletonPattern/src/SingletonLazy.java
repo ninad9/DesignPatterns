@@ -4,6 +4,9 @@ public class SingletonLazy {
     
     //private constructor to restrict multiple object creation
     private SingletonLazy(){
+        // To avoid breaking of Singleton pattern using Reflection API
+        if(singletonLazy!=null)
+            throw new RuntimeException("Singleton object already exists");
     }
     
     public static SingletonLazy getSingletonLazy(){
