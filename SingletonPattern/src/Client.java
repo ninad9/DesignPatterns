@@ -1,20 +1,16 @@
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 public class Client {
 
-public static void main(String[] args) { 
+    public static void main(String[] args) { 
 
-    SingletonEnum se1 = SingletonEnum.INSTANCE;
+        SingletonLazy sl1 = SingletonLazy.getSingletonLazy();
+        System.out.println(sl1.hashCode());
 
-    try {
-        Constructor<SingletonEnum> constructor = SingletonEnum.class.getDeclaredConstructor();
-        constructor.setAccessible(true);
-        SingletonEnum se2 = constructor.newInstance();
-        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-        e.printStackTrace();
+        try {
+                SingletonLazy sl2 = (SingletonLazy) sl1.clone();
+                System.out.println(sl2.hashCode());
+            } catch (CloneNotSupportedException e) {    
+                e.printStackTrace();
+            }
     }
-}
 
 }

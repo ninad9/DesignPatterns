@@ -1,4 +1,4 @@
-public class SingletonLazy {
+public class SingletonLazy implements Cloneable{
 
     private static SingletonLazy singletonLazy;
     
@@ -15,4 +15,12 @@ public class SingletonLazy {
         }
         return singletonLazy;
     }
+
+    // To avoid breaking of Singleton pattern using Object Cloning
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return singletonLazy;
+    }
+
+    
 }
