@@ -1,4 +1,6 @@
-public class SingletonLazy implements Cloneable{
+import java.io.Serializable;
+
+public class SingletonLazy implements Cloneable, Serializable{
 
     private static SingletonLazy singletonLazy;
     
@@ -22,5 +24,10 @@ public class SingletonLazy implements Cloneable{
         return singletonLazy;
     }
 
+    // To avoid breaking of Singleton pattern during Serialization-Deserialization
+    public Object readResolve(){
+        return singletonLazy;
+    } 
+    
     
 }
